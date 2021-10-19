@@ -1,5 +1,5 @@
 // main.js
-
+// test comments
 /// <reference types="akamai-edgeworkers"/>
 
 import { createResponse } from 'create-response';
@@ -34,16 +34,11 @@ async function getFlag(request) {
 }
 
 export async function responseProvider(request, response) {
-	const userLocation = request.userLocation;
 	const tosearchfor = 'Maryland';
-	// const newtext = userLocation.city
 	const newtext = request.getVariable('PMUSER_USER_LOCATION');
 	const howManyReplacements = 1;
 	
-	logger.log("scheme:%s host:%s url:%s", request.scheme, request.host, request.url);
 	return httpRequest(`${request.scheme}://${request.host}${request.url}`).then(response => {
-		// Get headers from response
-		
 		return createResponse(
 			200,
 			{'Vary':"Accept-Language",'X-Served-By':"Duane's EdgeWorker"},
@@ -52,7 +47,6 @@ export async function responseProvider(request, response) {
 			.pipeThrough(new FindAndReplaceStream(tosearchfor, newtext, howManyReplacements))
 			.pipeThrough(new TextEncoderStream())
 		);
-    	//return getFlag(request);
 	});
 }
 
