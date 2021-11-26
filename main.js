@@ -1,5 +1,5 @@
 // main.js
-// test comments
+// test comments 123456
 /// <reference types="akamai-edgeworkers"/>
 
 import { createResponse } from 'create-response';
