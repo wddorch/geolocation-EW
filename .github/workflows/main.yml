@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: GitHub CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on.
+    runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job..
+    steps:
+      - name: Annotation - start of deployment
+        uses: jdmevo123/akamai-mpulse-annotation-action@1.0
+        with:
+          Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
+          title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
+          text: ${{toJson(github.event.head_commit.message) }}
+          tennant: "duanedorch.com" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank.
+          domainIds: "161723"
