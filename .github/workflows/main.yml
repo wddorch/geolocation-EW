@@ -26,4 +26,4 @@ jobs:
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
           text: ${{toJson(github.event.head_commit.message) }}
           tennant: "Akamai Demo" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank.
-          domainIds: 161723
+          domainIds: ${{ secrets.DOMAINID }}
