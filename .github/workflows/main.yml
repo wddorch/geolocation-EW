@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+# This workflow intiates an mPulse annotation after each push/pull with Actions
 
 name: GitHub CI
 
@@ -6,9 +6,9 @@ name: GitHub CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,5 +25,5 @@ jobs:
           Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
           title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
           text: ${{toJson(github.event.head_commit.message) }}
-          tennant: "duanedorch.com" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank.
-          domainIds: "161723"
+          tennant: "Akamai Demo" #If api key has access to multiple tennant place the tennant name here, otherwise leave as blank.
+        # domainIds: ${{ secrets.DOMAINID }}
