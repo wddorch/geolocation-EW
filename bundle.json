@@ -1,4 +1,4 @@
 {
-    "edgeworker-version": "0.14",
+    "edgeworker-version": "0.15",
     "description" : "EdgeWorker demo - using PMUSER_USER_LOCATION property variable"
 }
